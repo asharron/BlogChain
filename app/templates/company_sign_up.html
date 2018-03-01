@@ -1,0 +1,27 @@
+                                                                                                              
+{% extends "base.html" %}
+
+{% block content %}
+<div id = "signup">
+<form method="POST" action="{{ url_for('company_signup') }}">
+
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name() }}
+    <br>
+    {{ form.address.label }} {{ form.address() }} <br>
+    {{ form.state.label }} {{ form.state() }} <br>
+    {{ form.city.label }} {{ form.city() }}<br>
+    {{ form.website.label }} {{ form.website() }}
+    {{ form.email.label }} {{ form.email() }}
+    {{ form.password.label }} {{ form.password() }}<br>
+    {{ form.submit() }}
+
+</form>
+</div>
+{% endblock %}
+
+
+
+
+
+

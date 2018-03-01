@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="job-board radius shadow">
+<h1>Jobs</h1>
+{% for job in jobs.items %}
+<div class="job radius">
+    <h4><a href="{{ url_for('apply',job=job.jid) }}">{{ job.jid}} {{ job.title }}</a></h4>
+    <ul>
+        <li>Description: {{ job.description }}</li>
+        <li>Rate: {{ job.rate }}</li>
+    </ul>
+       
+</div>
+{% endfor %}
+<div class="pag-nav">
+{% if jobs.has_prev %}<a href="{{ url_for('jobs', page=jobs.prev_num) }}">&lt;&lt; Previous Jobs</a>{% else %}&lt;&lt; Previous Jobs{% endif %} | 
+{% if jobs.has_next %}<a href="{{ url_for('jobs', page=jobs.next_num) }}">More Jobs &gt;&gt;</a>{% else %}More Jobs &gt;&gt;{% endif %}
+</div>
+</div>
+{% endblock %}
+
+
+
+
+
+

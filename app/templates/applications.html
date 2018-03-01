@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="applications black-box radius shadow">
+{% if applications != [] %}
+{% for application in applications %}
+<div class="application">
+    <ul>
+        <li>User: {{ User.query.filter_by(uid=application.uid).first().fname }} {{ User.query.filter_by(uid=application.uid).first().lname }} </li>
+        <li>{{ Job.query.filter_by(jid=application.jid).first().title }}</li>
+        <li>{{ application.description }} </li>
+        <li><a href="{{ url_for('profile',id=application.uid) }}">User Profile</a></li>
+        <li><a href="{{ url_for('setInterview',uid=application.uid,jid=application.jid) }}">Schedule an Interview</a></li>
+    </ul>
+</div>
+{% endfor %}
+{% else %}
+<h1>You Currently Have No Applications!</h1>
+{% endif %}
+</div>
+{% endblock %}

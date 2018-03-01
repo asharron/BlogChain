@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="your-interviews black-box shadow radius">
+{% if interviews != [] %}
+<h2>Here are all of your interviews</h2>
+{% for interview in interviews %}
+<ul>
+    <li>Job Title: {{ Job.query.filter_by(jid=interview.jid).first().title }}</li>
+    <li>Company: {{ Company.query.filter_by(cid=interview.cid).first().name }}</li>
+    <li>Interviewer: {{ interview.interviewer }}</li>
+    <li>Comments: {{ interview.comment }}</li>
+    <li>Done?: <form method='post' action="{{ url_for('view_interviews') }}">{{ form.iid(value=interview.iid) }} {{ form.submit() }}</form></li>
+</ul>
+
+{% endfor %}
+{% else %}
+<h2>Sorry, you currently do not have any interviews set</h2>
+{% endif %}
+</div>
+
+{% endblock %}

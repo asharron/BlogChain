@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="set-interview black-box shadow radius block-input">
+<h2>Schedule an Interview</h2>
+<form method='post' action="{{ url_for('setInterview',uid=uid,jid=jid)}}">
+
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name() }}
+    {{ form.time.label }} {{ form.time() }}
+    {{ form.comment.label }} {{ form.comment() }}
+    {{ form.submit() }}
+
+</form>
+</div>
+{% endblock %}

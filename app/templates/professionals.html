@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="introduction" style="background-image: url({{ url_for('static',filename='img/homepage.png') }}); background-size:cover">
+<h1>Professionals</h1>
+<br>
+<p><a href="{{ url_for('login') }}">LOGIN</a></p>
+<br>
+<p><a href="{{ url_for('signup') }}">SIGN UP</a></p>
+<br>
+</div>
+{% endblock %}
+

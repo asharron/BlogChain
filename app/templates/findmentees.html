@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for mentee in mentees.items %}
+<div class="mentee">
+    <h4>{{ mentee.fname }} {{ mentee.lname }}</h4>
+    <ul>
+        <li>Interest: {{ mentee.interest }}</li>
+        <li>State: {{ mentee.state }}</li>
+        <li>City: {{ mentee.city }}</li> 
+    </ul>
+    {% if mentee.skills %}
+    <ul>
+    {% for skill in mentee.skills.split() %}
+    <li>{{ skill }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endfor %}
+{% if mentees.has_prev %}<a href="{{ url_for('findmentee', page=mentees.prev_num) }}">&lt;&lt; Previous Mentees</a>{% else %}&lt;&lt; Previous Mentees{% endif %} | 
+{% if mentees.has_next %}<a href="{{ url_for('findmentee', page=mentees.next_num) }}">More Mentees &gt;&gt;</a>{% else %}More Mentees &gt;&gt;{% endif %}
+
+
+{% endblock %}

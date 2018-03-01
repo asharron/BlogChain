@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="circle">
+<h1>Community</h1>
+<br>
+<p><a href="{{ url_for('community_general') }}">General</a></p>
+<br>
+<p><a href="{{ url_for('community_cybersecurity') }}">Cybersecurity</a></p>
+<br>
+<p><a href="{{ url_for('community_faq') }}">FAQS</a></p>
+<br>
+<p><a href="{{ url_for('community_rules') }}">Rules and Regulations</a></p>
+<br>
+<p><a href="{{ url_for('community_request') }}">Request A New Community</a></p>
+</div>
+{% endblock %}
+
+

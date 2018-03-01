@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="introduction" style="background-image: url({{ url_for('static',filename='img/homepage.png') }}); background-size:cover">
+    <img class='girl1' src="{{ url_for('static',filename='img/girl1_dark.png') }}">
+    <img class='girl2' src="{{ url_for('static',filename='img/girl2_dark.png') }}">
+    <h3 class="description">a professional <span class="social">social network</span> <span class="exchange">exchange</span><br> <span class="powered">powered by blockchain</span></h2>
+    <img class='guy' src="{{ url_for('static',filename='img/guy_dark.png') }}">
+    <h2 class="join">JOIN THE</h2>
+    <h2 class="community">COMMUNITY</h2>
+    <p class="join">putting people together <span class="opprotunity">with opportunity</span></p>
+</div>
+<div class="pitch" style="background-image: url({{ url_for('static',filename='img/cyberman.png') }});">
+<h3 class="market">MORE THAN A FREELANCE MARKET...</h3>
+<h3 class="network">MORE THAN A SOCIAL NETWORK...</h3>
+<h3 class="currency">MORE THAN A CRYPTOCURRENCY...</h3>
+<h3 class="matter">YOUR SKILLS, MAKING CONNECTIONS THAT MATTER, <br>&amp; FUNDING YOUR BUISNESS SECURELY...</h3>
+<p>For the first time ever, startups and small businesses can compete with the marketing and business strategy of larger businesses. By networking with a vast community of professionals that exchange knowledge and services for their fellow entrepreneurs, you can innovate, motivate, and build businesses at overnight pace like never before.  Benefit together with freelance developers, designers and professionals to provide services on demand with simple, secure transactions between connections!  Instant access and availability of services keep your business agile and remove the overhead of having to staff for short term needs! </p>
+</div>
+{% endblock %}

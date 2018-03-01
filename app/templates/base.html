@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Nunito:300" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/base.css') }}">
+</head>
+<body style="background-image: url({{ url_for('static',filename='img/homepage.png') }}); background-size:cover; background-repeat: no-repeat;">
+    <div class="fixed-header">
+        <h1><a href="{{ url_for('home') }}">crypto<span class="work-title">WORK</span></a></h1>
+        <form action="">
+            <input type="text" value="">
+        </form>
+        {% if session['name'] %}
+        <h2>Welcome {{ session['name'] }} | <a href="{{ url_for('logout') }}">Logout</a></h2>
+        {% else %}
+        <h2><a href="{{ url_for('login') }}">Login</a>/<a href="{{ url_for('signup')}}">Sign Up</a></h2>
+        {% endif %}
+        </div>
+    </div>   
+        
+    <nav>
+        <a class="nav-link" href="{{ url_for('faq') }}">how it works</a>
+        <ul>
+            <li><a href="{{url_for('dashboard')}}">Professionals</a></li>
+	        <li><a href="{{ url_for('company_dashboard') }}">Companies</a></li>
+            <li><a href="{{ url_for('blog') }}">Blogs</a></li>
+            <li><a href="{{ url_for('community') }}">Communities</a></li>
+        </ul>
+    </nav>
+    
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <li class="message">{{ message }} </li>
+    {% endfor %} 
+    {% endif %}
+    {% endwith %}
+    <div class="block">
+    {% block content %}{% endblock %}
+    </div>
+
+    <footer><p>&copy;2018 by CryptoWork</p></footer>
+</body>
+
+</html>
+

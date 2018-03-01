@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="apply shadow radius">
+<h1>Apply for {{ job.title }}</h1>
+<ul>
+    <li>Description: {{ job.description }}</li>
+    <li>Rate: {{ job.rate }}</li>
+</ul>
+<form method="POST" action="{{ url_for('apply',job=job.jid) }}">
+    {{ form.hidden_tag() }}
+    {{ form.show_blogs.label }} {{ form.show_blogs() }} <br>
+    {{ form.notify_mentor.label }} {{ form.notify_mentor() }} <br> <br>
+    {{ form.description.label }} <br>
+    {{ form.description() }} <br>
+    {{ form.submit() }}
+</form>
+</div>
+
+{% endblock %}

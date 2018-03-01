@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="signup">
+<form method="POST" action="{{ url_for('signup') }}">
+
+    {{ form.hidden_tag() }}
+    {{ form.fname.label }} {{ form.fname() }}
+    {{ form.lname.label }} {{ form.lname() }}
+    {{ form.birthday.label }} {{ form.birthday() }}
+    {{ form.gender.label }} {{ form.gender() }}
+    {{ form.state.label }} {{ form.state() }}
+    {{ form.city.label }} {{ form.city() }}
+    {{ form.zipcode.label }} {{ form.zipcode() }}
+    {{ form.interest.label }} {{ form.interest() }} 
+    {{ form.avail_mentee.label }} {{ form.avail_mentee() }}
+    {{ form.photo.label }} {{ form.photo() }}
+    {{ form.email.label }} {{ form.email() }}
+    {{ form.password.label }} {{ form.password() }}
+    {{ form.submit() }}
+
+</form>
+</div>
+
+{% endblock %}

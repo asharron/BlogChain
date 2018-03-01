@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class='blog-container'>
+{{ title|markdown }}
+{{ body|markdown }}
+</div>
+
+<p><a href="{{ url_for('write_blog') }}">Add Blog Post</a></p>
+
+{% endblock %}
+
+

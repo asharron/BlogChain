@@ -1,0 +1,39 @@
+{%extends "base.html" %}
+
+{% block content%}
+<div class="profile-page">
+<h2>Meet {{ user.fname }}</h2>
+<img class="profile-pic" src="{{ url_for('static',filename='img/profile.png') }}">
+<div class="profile-page-description black-box shadow radius">
+<ul>
+    <li>Name: {{ user.fname }} {{ user.lname }}</li>
+    <li>Located: {{ user.state }}</li>
+    <li>Interest: {{ user.interest }}</li>
+    <li></li>
+</ul>
+<form class='edit-skills' style="visibility: hidden; float: right;" action="{{ url_for('profile',id=id) }}" method='POST'>
+{{ form.hidden_tag() }}
+{{form.skills.label}} {{form.skills()}}<br>
+{{form.submit()}}
+</form>
+
+<ul class='listed-skills' style='float: left;'>
+{% for skill in skills %}
+<li>{{ skill.name }}</li>
+{% endfor %}
+</ul>
+<button class='button' onclick='edit()'>Edit Skills</button>
+</div>
+
+</div>
+
+<script>
+    function edit() {
+        document.getElementsByClassName('listed-skills')[0].style.visibility = 'hidden';
+        document.getElementsByClassName('button')[0].style.visibility = 'hidden';
+        document.getElementsByClassName('edit-skills')[0].style.float = 'none';
+        document.getElementsByClassName('edit-skills')[0].style.visibility = 'visible';
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="postjob radius black-box shadow block-input">
+<h2>Post a Job</h2>
+<form method='POST' action="{{ url_for('post_job') }}">
+{{ form.hidden_tag() }}
+{{ form.title.label }} {{ form.title() }}
+{{ form.description.label }} {{ form.description() }}
+{{ form.rate.label }} {{ form.rate() }}
+{{ form.due.label }} {{ form.due() }}
+{{ form.submit() }}
+</form>
+
+</div>
+
+{% endblock %}
+
+
+

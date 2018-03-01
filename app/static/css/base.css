@@ -1,0 +1,494 @@
+/*
+body styling with css reset
+*/
+html {
+    margin: 0;
+    height: 100%;
+}
+body {
+    position: relative;
+    min-height: 100%;
+    background-color: #0D1C9B;
+    margin: 0;
+    font-family: 'Nunito',sans-serif;
+}
+
+div.block {
+    margin: 0;
+    padding-bottom: 60px;
+}
+/* styling for the 
+fixed header at top of page*/
+.fixed-header {
+    z-index: 1;
+    color: blue;
+    position: fixed;
+    top: 0;
+    background-color: black;
+    width: 100%;
+    height: 70px;
+    box-shadow: 5px 3px 7px #403f3f;
+}
+.fixed-header h1{
+    margin-left: 20px;
+    float: left;
+}
+
+.fixed-header form{
+    float: left;
+    margin: 30px 15px 0;
+}
+
+.fixed-header form input {
+    padding: 3px 0;
+}
+
+.fixed-header h2 {
+    margin-right: 20px;
+    float: right;
+}
+
+.fixed-header a {
+    text-decoration: none;
+}
+.fixed-header a:visited{
+    color: blue;
+}
+
+.fixed-header a:hover{
+    color: lightblue;
+}
+.work-title{
+    color: #00EAFA;
+}
+
+/* styling for the nav bar */
+nav {
+    margin-top:70px;
+    font-size: 2em;
+    background-color: white;
+    color: black;
+    height: 50px;
+}
+
+nav ul{
+    margin-top: 0;
+    margin-left: 70px;
+    padding: 5px 5px;
+    text-align: left;
+}
+nav li {
+    list-style: none;
+    display: inline-block;
+    font-size: 30px;
+}
+
+nav a{
+    text-decoration: none;
+    padding: 20px;
+}
+
+nav a:hover{
+    color: black;
+}
+
+nav a:visited{
+    color: blue;
+}
+
+.nav-link {
+    margin-right: 50px;
+    float: right;
+    padding: 5px;
+    font-size: 30px;
+}
+/* General styles */
+
+/* link styles */
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: #00EAFA;
+}
+
+/* styling for forms */
+label {
+    font-size: 1.2em;
+}
+
+.login-block form input {
+    margin: 5px;
+}
+
+input {
+    background-color: #0D1C9B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.block-input input {
+    display: block;
+    margin: auto;
+}
+
+.block-input label{
+    display: block;
+    text-align: center;
+}
+
+.block-input #submit {
+    margin-top: 10px;
+}
+
+/* Custom styles */
+.shadow {
+  box-shadow: 5px 3px 7px #403f3f;
+}
+
+.radius {
+  border-radius: 20px;
+}
+
+.pag-nav {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.black-box {
+    width: 90%;
+    margin: 20px auto 0;
+    color: white;
+    background-color: black;
+    padding: 10px;
+}
+
+/* styling for homepage */
+
+/*styling for first block of content */
+.introduction {
+    background-repeat: no-repeat;
+    background-position: 0 -100px;
+    height: 1080px;
+    position: relative;
+}
+
+img.girl1 {
+    float: left;
+}
+
+img.girl2 {
+    float: right;
+}
+
+img.guy {
+    margin: 0;
+    margin-top: 100px;
+    clear: both;
+    float: right;
+    margin-right: 20px;
+}
+
+span.social {
+    font-size: 2em;
+    color: #0896FC;
+    
+}
+
+span.exchange {
+    color: #00EAFA;
+}
+
+span.powered {
+  color: #0896FC;
+  position: absolute;
+  font-size: 1.2em;
+}
+
+h3.description {
+    font-size: 1.25em;
+    margin: 0;
+    padding-top: 30px;
+    text-align: center;
+	font-family: avenir-lt-w01_35-light1475496,sans-serif;
+    color: white;
+}
+
+.join{
+    margin: 0;
+}
+
+h2.join{
+    font-size: 2.5em;
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 30%;
+}
+
+.community{
+    position: absolute;
+    top: 34%;
+    left:  30%;
+    font-size: 4em;
+    color: white;
+}
+
+span.opprotunity{
+    color: #00EAFA;
+}
+
+p.join{
+    position: absolute;
+    font-size: 1.5em;
+    top: 45%;
+    left: 30%;
+    color: #0896FC;
+}
+
+/* styling for second block of content */
+
+div.pitch {
+    height:645px;
+    margin-top: -100px;
+    background-color: blue;
+}
+
+div.pitch h3 {
+    color: white;
+    margin: 0;
+    font-size: 2em;
+}
+
+div.pitch h3.market{
+    text-align: center;
+}
+
+div.pitch h3.network{
+    padding-left: 300px;
+}
+
+div.pitch h3.currency{
+    padding-left: 250px;
+}
+
+div.pitch h3.matter{
+    color: #00EAFA;
+    padding-left: 150px;
+}
+
+div.pitch p{
+    color: grey;
+    font-size: 1.2em;
+    text-align: justify;
+    width: 50%;
+    padding-left: 175px;
+    line-height: 1.5em;
+}
+
+/* Styling for login page */
+.login-block {
+    box-shadow: 5px 3px 7px #403f3f;
+    border-radius: 20px;
+    background-color: black;
+    color: lightblue;
+    width: 30%;
+    margin: 70px auto 0;
+    text-align: center;
+    padding: 5px;
+}
+
+.login-block form input {
+    margin: 5px;
+}
+input#email, input#password {
+    background-color: #0D1C9B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+input#submit {
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    background-color: #0D1C9B;
+}
+
+input#submit:hover {
+    color: grey;
+}
+/* styling for signup page */
+div#signup{
+    box-shadow: 5px 3px 7px #403f3f;
+    border-radius: 20px;
+    padding: 15px;
+    color: lightblue;
+    background-color: black;
+    width: 600px;
+    margin: 30px auto;
+    clear: both;
+}
+
+div#signup label {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+div#signup input{
+    width: 70%;
+    display: block;
+    margin: 0 auto 6px;
+}
+div#signup select {
+    display: block;
+    margin: 0 auto;
+}
+
+/* styling for the profile page */
+
+.profile-page h2{
+    text-align: center;
+    font-size: 1.8em;
+}
+
+.profile-page-description ul {
+    list-style: none;
+    font-size: 1.2em;
+}
+
+
+.profile-pic {
+    width: 200px;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+/* styling for /blog/write */
+
+.write-blog{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.write-blog label{
+    font-size: 1.2em;
+}
+
+/* styling for the dashboard */
+div.dash {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: black;
+}
+
+div.dash h1 {
+    color: white;
+    text-decoration: underline;
+}
+
+div.dash p {
+    font-size: 1.3em;
+}
+
+/* styling for jobs page */
+div.job-board {
+    
+    width: 90%;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.job {
+    background-color: #0D1C9B;
+}
+
+.job h4 {
+    padding: 5px;
+}
+
+.job li {
+    list-style: none;
+}
+
+/* styling for the post_job page */
+
+.postjob {
+    width: 40%;
+}
+
+.postjob h2 {
+    text-align: center
+}
+
+/* apply page styling */
+div.apply {
+    width: 90%;
+    margin: 20px auto 0;
+    color: white;
+    background-color: black;
+    padding: 10px;
+}
+
+/* footer styling */
+footer {
+    background-color: black;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+}
+
+footer p{
+    width: 100%;
+    color: #00EAFA;
+    margin: 0;
+    padding-top: 10px;
+    background-color: black;
+    text-align: center;
+}
+
+/* blog page */
+
+.blog-container{
+    width: 50%;
+    margin: 0 auto;
+    color: lightblue;
+    padding: 15px;
+    background-color: black;
+}
+
+/* misc */
+.error {
+    color: red;
+}
+
+
+.message {
+    padding: 5px;
+    background-color: grey;
+    color: white;
+}
+
+/* styling for community page */
+.circle { 
+          width:150px;
+	  height:150px; 
+          border: solid 1px #555; 
+          background-color: #fff; 
+          box-shadow: 10px -10px rgba(0,0,0,0.6); 
+          -moz-box-shadow: 10px -10px rgba(0,0,0,0.6); 
+          -webkit-box-shadow: 10px -10px rgba(0,0,0,0.6); 
+          -o-box-shadow: 10px -10px rgba(0,0,0,0.6); 
+          border-radius:100px; 
+} 
+
