@@ -6,7 +6,7 @@
 
 if [ ! -d venv ]
 then
-  virtualenv -p python3.6 venv
+  virtualenv -p python3.5 venv
 fi
 
 . venv/bin/activate
