@@ -414,4 +414,8 @@ def jobs_company(page=1):
   jobs = Job.query.filter_by().paginate(page,10,False)
   return render_template("jobs_company.html",jobs=jobs)
 
+@app.route("/joinnetwork",methods=['GET', 'POST'])
+def join_network():
+
+
 

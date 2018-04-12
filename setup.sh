@@ -6,7 +6,7 @@
 
 if [ ! -d venv ]
 then
-  virtualenv -p python3.5 venv
+  virtualenv -p python3.6 venv
 fi
 
 . venv/bin/activate
@@ -23,4 +23,4 @@ pip install Flask-Mail
 pip install Flask-Misaka
 pip install steem
 
-sed -i '44s/.*/Requires-Dist: toml (==0.9.3)/' ./venv/lib/python3.5/site-packages/steem-0.18.103.dist-info/METADATA
+sed -i '44s/.*/Requires-Dist: toml (==0.9.3)/' ./venv/lib/python3.6/site-packages/steem-0.18.103.dist-info/METADATA
