@@ -118,7 +118,10 @@ def update_nodes():
     else:
         return 200
 
-
+def join_network():
+    with open('server.txt','r'):
+        serverip = f.readline()
+    response = request.post(serverip + '/join')
 
 def find_new_chains():
     #Get blockchains of every other node
@@ -143,6 +146,5 @@ def consensus():
     # then we set our chain to the longest
     blockchain = longest_chain
 
-
-
 node.run(host='0.0.0.0')
+join_network()

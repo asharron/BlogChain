@@ -1,5 +1,5 @@
 #this is where we cover all of our routes and what happens in the views that we render
-from flask import render_template, flash, redirect, session, url_for, request, g
+from flask import render_template, flash, redirect, session, url_for, request, g, jsonify
 from app import app, db, mail , s
 from .models import *
 from .forms import *
@@ -18,7 +18,7 @@ calendlyKey = "JHJEGBEAMJFPW4225EQBHPNTABQJN5TX"
 def home():
   return render_template("index.html")
 
-@app.route("/login",methods=['GET','POST']) #Route for Logging in the user
+app.route("/login",methods=['GET','POST']) #Route for Logging in the user
 def login():
   form = Login() #Create form object
   #If the user submitted the form
