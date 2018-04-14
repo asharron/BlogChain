@@ -14,7 +14,7 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 app.secret_key = "secret"
 Misaka(app)
-node = ['https://steemd.steemit.com']
+node = ['https://api.steemit.com']
 s = Steem(node)
 
 from app import views, models

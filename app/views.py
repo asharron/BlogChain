@@ -5,6 +5,7 @@ from .models import *
 from .forms import *
 from flask_mail import Message
 from steem import Steem
+import yaml
 import requests
 import json
 import os
@@ -400,10 +401,10 @@ def post_job():
       db.session.commit()
       return redirect( url_for('company_dashboard') )
     else:
-      print("form was not validated")
+      print("form was not validated") #Tell user that form was not validated
       return render_template("post_job.html",form=form)
   else:
-    return redirect( url_for('company_login'))
+    return redirect( url_for('company_login')) #Return the company url
   
 
 
@@ -416,6 +417,6 @@ def jobs_company(page=1):
 
 @app.route("/joinnetwork",methods=['GET', 'POST'])
 def join_network():
-
-
-
+    x = {"hello":"no"}
+    stream = open('config.yaml','w')
+    yaml.dump(x,stream)
