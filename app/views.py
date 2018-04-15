@@ -313,8 +313,6 @@ def applications():
   if 'cid' in session:
     applications = Application.query.filter_by(cid=session['cid']).all()
     return render_template('applications.html',applications=applications,User=User,Job=Job)
-  
-
 
 @app.route("/company_login",methods=['GET','POST']) #Route for Logging in the company
 def company_login():
@@ -405,7 +403,6 @@ def post_job():
       return render_template("post_job.html",form=form)
   else:
     return redirect( url_for('company_login')) #Return the company url
-  
 
 
 #route for jobs_company
@@ -417,6 +414,16 @@ def jobs_company(page=1):
 
 @app.route("/joinnetwork",methods=['GET', 'POST'])
 def join_network():
-    x = {"hello":"no"}
-    stream = open('config.yaml','w')
-    yaml.dump(x,stream)
+    ip = request.remote_addr
+    with open('nodes.yaml', 'r') as f:
+        nodes = yaml.load(f)
+    nodes.append(ip)
+    with open('nodes.yaml', 'w') as f:
+        f.write(yaml.dump(nodes))
+    broadcast(nodes)
+
+def broadcast(node_list):
+    nodes = jsonify(node_list)
+    for node in node_list:
+        url = node + '/updatenodes'
+        request.post(url, json=nodes)
