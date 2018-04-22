@@ -1,9 +1,10 @@
 #this is where we cover all of our routes and what happens in the views that we render
-from flask import render_template, flash, redirect, session, url_for, request, g
+from flask import render_template, flash, redirect, session, url_for, request, g, jsonify
 from app import app, db, mail
 from .models import *
 from .forms import *
 from flask_mail import Message
+import yaml
 import requests
 import json
 import os
@@ -16,7 +17,7 @@ calendlyKey = "JHJEGBEAMJFPW4225EQBHPNTABQJN5TX"
 def home():
   return render_template("index.html")
 
-@app.route("/login",methods=['GET','POST']) #Route for Logging in the user
+app.route("/login",methods=['GET','POST']) #Route for Logging in the user
 def login():
   form = Login() #Create form object
   #If the user submitted the form
@@ -311,8 +312,6 @@ def applications():
   if 'cid' in session:
     applications = Application.query.filter_by(cid=session['cid']).all()
     return render_template('applications.html',applications=applications,User=User,Job=Job)
-  
-
 
 @app.route("/company_login",methods=['GET','POST']) #Route for Logging in the company
 def company_login():
@@ -399,11 +398,10 @@ def post_job():
       db.session.commit()
       return redirect( url_for('company_dashboard') )
     else:
-      print("form was not validated")
+      print("form was not validated") #Tell user that form was not validated
       return render_template("post_job.html",form=form)
   else:
-    return redirect( url_for('company_login'))
-  
+    return redirect( url_for('company_login')) #Return the company url
 
 
 #route for jobs_company
@@ -413,9 +411,18 @@ def jobs_company(page=1):
   jobs = Job.query.filter_by().paginate(page,10,False)
   return render_template("jobs_company.html",jobs=jobs)
 
-"""
 @app.route("/joinnetwork",methods=['GET', 'POST'])
 def join_network():
-"""
+    ip = request.remote_addr
+    with open('nodes.yaml', 'r') as f:
+        nodes = yaml.load(f)
+    nodes.append(ip)
+    with open('nodes.yaml', 'w') as f:
+        f.write(yaml.dump(nodes))
+    broadcast(nodes)
 
-
+def broadcast(node_list):
+    nodes = jsonify(node_list)
+    for node in node_list:
+        url = node + '/updatenodes'
+        request.post(url, json=nodes)

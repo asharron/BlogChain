@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from block import Block
 import datetime as date
+import yaml
 import json
 from genesis import create_genesis_block
 
@@ -14,7 +15,9 @@ blockchain = [create_genesis_block()]
 this_nodes_transactions = []
 
 miner_address = "q3nf394hjg-random-miner-address-34nf3i4nflkn3oi"
-peer_nodes = []
+yaml_file = open('nodes.yaml','r')
+peer_nodes = yaml.load(yaml_file)
+yaml_file.close()
 
 #Helper function for calculating proof of work
 def proof_of_work(last_proof):
@@ -102,6 +105,23 @@ def get_blocks():
     chain_to_send = json.dumps(chain_to_send)
     return chain_to_send
 
+@node.route('/updatenodes', methods=['GET','POST'])
+def update_nodes():
+    #Check if broadcasting to node
+    if request.method == 'POST':
+        content = request.get_json() #Get json data from server
+        new_node_list = content['nodes'] #Grab the node list from json
+        yaml_file = open('nodes.yaml','w') #Write new nodes to file
+        yaml_file.write(yaml.dump(new_node_list))
+        yaml_file.close()
+        return "Updated nodes"
+    else:
+        return 200
+
+def join_network():
+    with open('server.txt','r'):
+        serverip = f.readline()
+    response = request.post(serverip + '/join')
 
 def find_new_chains():
     #Get blockchains of every other node
@@ -126,6 +146,5 @@ def consensus():
     # then we set our chain to the longest
     blockchain = longest_chain
 
-
-
-node.run()
+node.run(host='0.0.0.0')
+join_network()
