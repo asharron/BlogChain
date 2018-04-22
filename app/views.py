@@ -17,7 +17,7 @@ calendlyKey = "JHJEGBEAMJFPW4225EQBHPNTABQJN5TX"
 def home():
   return render_template("index.html")
 
-app.route("/login",methods=['GET','POST']) #Route for Logging in the user
+@app.route("/login",methods=['GET','POST']) #Route for Logging in the user
 def login():
   form = Login() #Create form object
   #If the user submitted the form
