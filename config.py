@@ -3,6 +3,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 SQLALCHEMY_DATABASE_URI = 'mysql:///app'
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+NODESCONFIG = os.path.join(basedir, 'blockchain/nodes.yaml')
 
 
 WTF_CSRF_ENABLED = True

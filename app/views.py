@@ -3,6 +3,7 @@ from flask import render_template, flash, redirect, session, url_for, request, g
 from app import app, db, mail
 from .models import *
 from .forms import *
+from config import *
 from flask_mail import Message
 import yaml
 import requests
@@ -148,6 +149,12 @@ def findmentee(page=1):
 @app.route("/blog",methods=['GET'])
 def blog():
   #Query the blockchain for a specific blog
+  with open(NODESCONFIG) as f:
+      nodes = yaml.load(f)
+  print(nodes)
+  for node in nodes:
+      response = requests.get(node + '/blocks')
+      print(response.json())
   return render_template("blog.html",body=blog,title=headline)
 
 #Route for faqs
