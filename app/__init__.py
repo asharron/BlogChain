@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 import os 
 from config import basedir
-from steem import Steem
 from flask.ext.misaka import Misaka
 
 
@@ -15,6 +14,5 @@ db = SQLAlchemy(app)
 app.secret_key = "secret"
 Misaka(app)
 node = ['https://steemd.steemit.com']
-s = Steem(node)
 
 from app import views, models

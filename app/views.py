@@ -1,10 +1,9 @@
 #this is where we cover all of our routes and what happens in the views that we render
 from flask import render_template, flash, redirect, session, url_for, request, g
-from app import app, db, mail , s
+from app import app, db, mail
 from .models import *
 from .forms import *
 from flask_mail import Message
-from steem import Steem
 import requests
 import json
 import os
@@ -414,8 +413,9 @@ def jobs_company(page=1):
   jobs = Job.query.filter_by().paginate(page,10,False)
   return render_template("jobs_company.html",jobs=jobs)
 
+"""
 @app.route("/joinnetwork",methods=['GET', 'POST'])
 def join_network():
-
+"""
 
 
