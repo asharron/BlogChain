@@ -148,9 +148,6 @@ def findmentee(page=1):
 @app.route("/blog",methods=['GET'])
 def blog():
   #Query the blockchain for a specific blog
-  data = s.get_content('tomshwom','tomshwom-s-advanced-crypto-security-guide-part-1-privacy-security-and-trust')
-  headline = data['title'] #Access the response for the blog title
-  blog = data['body'] #Access the response to get the body of the blog
   return render_template("blog.html",body=blog,title=headline)
 
 #Route for faqs
