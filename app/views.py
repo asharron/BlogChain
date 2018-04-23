@@ -9,6 +9,7 @@ import yaml
 import requests
 import json
 import os
+import ast
 from werkzeug.utils import secure_filename
 
 calendlyKey = "JHJEGBEAMJFPW4225EQBHPNTABQJN5TX"
@@ -148,14 +149,18 @@ def findmentee(page=1):
 #Route for users blogs
 @app.route("/blog",methods=['GET'])
 def blog():
+  blogs = []
   #Query the blockchain for a specific blog
   with open(NODESCONFIG) as f:
       nodes = yaml.load(f)
   print(nodes)
   for node in nodes:
-      response = requests.get(node + '/blocks')
-      print(response.json())
-  return render_template("blog.html",body=blog,title=headline)
+      response = requests.get('http://' + node + '/blocks')
+      for block in response.json():
+          blogs.append(ast.literal_eval(block['data']))
+      break
+  print(blogs)
+  return render_template("blog.html",blogs=blogs)
 
 #Route for faqs
 @app.route("/faq",methods=['GET'])
@@ -253,10 +258,17 @@ def write_blog():
   form = WriteBlog() #Make the blog writing form
   if request.method == 'POST' and form.validate():
     #Do blockchain logic here
-    pass
+    title = form.title.data
+    content = form.content.data
+    blog = {'title':title,'content':content}
+    blog = json.dumps(blog)
+    with open(NODESCONFIG) as f:
+        nodes = yaml.load(f)
+    for node in nodes:
+        response = requests.post('http://' + node + '/txion',data=blog)
+    return redirect(url_for('blog'))
   else:
-    pass
-  return render_template('write_blog.html',form=form)
+      return render_template('write_blog.html',form=form)
 
 #route for community
 @app.route("/community",methods=['GET'])
