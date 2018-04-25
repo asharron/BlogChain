@@ -1,7 +1,3 @@
-# Code was initally adopted from https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b
-# Then adapted to my needs 
-#
-#
 from flask import Flask
 from flask import request
 from block import Block
@@ -150,5 +146,5 @@ def consensus():
     # then we set our chain to the longest
     blockchain = longest_chain
 
-node.run(host='0.0.0.0')
+node.run(host='0.0.0.0',port=5001)
 join_network()
