@@ -44,9 +44,8 @@ def transaction():
         this_nodes_transactions.append(new_txion)
         #Log to console
         print("New Transaction")
-        print("From: {0}".format(new_txion['from']))
-        print("To: {0}".format(new_txion['to']))
-        print("Amount: {0}".format(new_txion['amount']))
+        print("title: {0}".format(new_txion['blog-title']))
+        print("content: {0}".format(new_txion['blog-content']))
 
         return "Transaction submission successful\n"
 

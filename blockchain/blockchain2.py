@@ -1,3 +1,7 @@
+# Code was initally adopted from https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b
+# Then adapted to my needs 
+#
+#
 from flask import Flask
 from flask import request
 from block import Block
@@ -40,9 +44,8 @@ def transaction():
         this_nodes_transactions.append(new_txion)
         #Log to console
         print("New Transaction")
-        print("From: {0}".format(new_txion['from']))
-        print("To: {0}".format(new_txion['to']))
-        print("Amount: {0}".format(new_txion['amount']))
+        print("title: {0}".format(new_txion['blog-title']))
+        print("content: {0}".format(new_txion['blog-content']))
 
         return "Transaction submission successful\n"
 

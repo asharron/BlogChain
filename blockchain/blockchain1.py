@@ -1,3 +1,7 @@
+# Code was initally adopted from https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b
+# Then adapted to my needs 
+#
+#
 from flask import Flask
 from flask import request
 from block import Block
@@ -35,14 +39,14 @@ def proof_of_work(last_proof):
 def transaction():
     if request.method == 'POST':
         #On each new POST request we extract tranaction data
-        new_txion = request.get_json()
+        new_txion_data = request.data.decode('utf-8')
+        new_txion = json.loads(new_txion_data)
         #Add transaction to list
         this_nodes_transactions.append(new_txion)
         #Log to console
         print("New Transaction")
-        print("From: {0}".format(new_txion['from']))
-        print("To: {0}".format(new_txion['to']))
-        print("Amount: {0}".format(new_txion['amount']))
+        print("title: {0}".format(new_txion['title']))
+        print("content: {0}".format(new_txion['content']))
 
         return "Transaction submission successful\n"
 
@@ -56,14 +60,15 @@ def mine():
     #Once we find a valid proof of work
     # We know we can mine a block
     # reward the miner by adding a transaction
-    this_nodes_transactions.append(
-            {"from": "network", "to": miner_address, "amount":1}
-            )
+#ToDO ^^^
     #Now gather the data needed
     new_block_data = {
             "proof-of-work": proof,
+            "blog-title":this_nodes_transactions[0]['title'],
+            "blog-content":this_nodes_transactions[0]['content'],
             "transactions": list(this_nodes_transactions)
             }
+    print(new_block_data)
     new_block_index = last_block.index + 1
     new_block_timestamp = this_timestamp = date.datetime.now()
     last_block_hash = last_block.hash
@@ -78,6 +83,7 @@ def mine():
             last_block_hash
             )
     blockchain.append(mined_block)
+    print("Appended new block to blockchain")
     return json.dumps({
         "index": new_block_index,
         "date": str(new_block_timestamp),
@@ -147,4 +153,3 @@ def consensus():
     blockchain = longest_chain
 
 node.run(host='0.0.0.0',port=5001)
-join_network()

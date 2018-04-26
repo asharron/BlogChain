@@ -266,6 +266,7 @@ def write_blog():
         nodes = yaml.load(f)
     for node in nodes:
         response = requests.post('http://' + node + '/txion',data=blog)
+        response = requests.get('http://' + node + '/mine')
     return redirect(url_for('blog'))
   else:
       return render_template('write_blog.html',form=form)
